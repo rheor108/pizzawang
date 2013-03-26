@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="user">
+	<typeAlias alias="User" type="com.sojin.user.dto.User"/>
+	
+	<resultMap class="User" id="selectUserByIdMap">
+		<result column="id"				 property="id"/>
+		<result column="pw"				 property="pw"/>
+		<result column="last_login_date" property="lastLoginDate"/>
+	</resultMap>
+	<select id="selectUserById" resultMap="selectUserByIdMap" parameterClass="java.lang.String">
+		SELECT * FROM User WHERE id=#userId#
+	</select>
+</sqlMap>

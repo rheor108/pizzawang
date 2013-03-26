@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="menu">
+	<typeAlias alias="Menu" type="com.sojin.menu.dto.Menu"/>
+	
+	<resultMap class="Menu" id="selectMenuByMenuIdMap">
+		<result column="menu_id" 		property="menuId"/>
+		<result column="menu_name"		property="menuName"/>
+		<result column="order_number"   property="orderNumber"/>
+		<result column="is_hidden" 		property="isHidden"/>
+		<result column="url" 			property="url"/>
+	</resultMap>
+	<select id="selectMenuByMenuId" resultMap="selectMenuByMenuIdMap" parameterClass="java.lang.String">
+		SELECT * FROM Menu WHERE id=#menuId#
+	</select>
+	
+	<resultMap class="java.util.HashMap" id="selectAllMenuMap">
+		<result column="menu_id" 		property="menuId"/>
+		<result column="menu_name"  	property="menuName"/>
+		<result column="order_number"   property="orderNumber"/>
+		<result column="is_hidden"		property="isHidden"/>
+		<result column="url" 			property="url"/>
+	</resultMap>
+	<select id="selectAllMenu" resultMap="selectAllMenuMap">
+		SELECT * FROM Menu
+	</select>
+	
+	<update id="modifyMenuName" parameterClass="Menu">
+		UPDATE Menu SET menu_name = #menuName# WHERE menu_id = #menuId#
+	</update>
+</sqlMap>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="profile">
+	<typeAlias alias="Profile" type="com.sojin.profile.dto.Profile"/>
+	
+	<select id="selectProfile" resultClass="java.lang.String">
+		SELECT * FROM Profile
+	</select>
+	
+	<select id="selectProfileCount" resultClass="java.lang.Integer">
+		SELECT count(*) FROM Profile
+	</select>
+	
+	<select id="updateProfile" parameterClass="lava.lang.String" resultClass="java.lang.Integer">
+		UPDATE Profile SET content=#content#
+	</select>
+	
+	<delete id="deleteProfile">
+		DELETE FROM Profile;
+	</delete>
+</sqlMap>
